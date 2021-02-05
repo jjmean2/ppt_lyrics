@@ -25,7 +25,9 @@ SECRET_KEY = 'af1@c8_7q==o4=@5=550o9coh%=dj3_&7qp5!zvq=_&#$@v1g0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+'jjmean2.pythonanywhere.com'
+]
 
 
 # Application definition
