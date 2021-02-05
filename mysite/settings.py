@@ -129,8 +129,8 @@ ROOT_DIR = BASE_DIR.parent
 STATIC_URL = '/static/'
 
 # static files
-STATIC_DIR = BASE_DIR / 'static'
-STATICFILES_DIRS = [
-    STATIC_DIR,
-]
+# STATIC_DIR = BASE_DIR / 'static'
+# STATICFILES_DIRS = [
+#     STATIC_DIR,
+# ]
 STATIC_ROOT = ROOT_DIR / '.static_root'
