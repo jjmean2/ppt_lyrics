@@ -23,10 +23,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'af1@c8_7q==o4=@5=550o9coh%=dj3_&7qp5!zvq=_&#$@v1g0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
 
 ALLOWED_HOSTS = [
-'jjmean2.pythonanywhere.com'
+'jjmean2.pythonanywhere.com',
+'localhost',
 ]
 
 
@@ -120,4 +121,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+ROOT_DIR = BASE_DIR.parent
+
 STATIC_URL = '/static/'
+
+# static files
+STATIC_DIR = BASE_DIR / 'static'
+STATICFILES_DIRS = [
+    STATIC_DIR,
+]
+STATIC_ROOT = ROOT_DIR / '.static_root'
