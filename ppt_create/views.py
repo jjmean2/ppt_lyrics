@@ -5,7 +5,10 @@ from pptx import Presentation
 from io import BytesIO
 from django.http import HttpResponse
 from .forms import LyricsForm
+from django.views.decorators.csrf import csrf_exempt
 
+
+@csrf_exempt
 def lyrics(request):
     form = LyricsForm()
     if request.method == 'POST':
