@@ -1,4 +1,5 @@
 import os
+import re
 from django.shortcuts import render
 from pptx import Presentation
 from io import BytesIO
@@ -37,17 +38,31 @@ def create_ppt_content(body):
     return ppt
 
 
+def get_slide_sources_from_text(body):
+    songs = re.split(r'\n={3,}\n', body)
+    sources = []
+    for song in songs:
+        pageSources = []
+        pages = re.split(r'\n-{3,}\n', song)
+        for page in pages:
+            lines = page.splitlines()
+            tag = lines[0].lstrip('[').rstrip(']')
+            content = '\n'.join(lines[1:])
+            pageSources.append((tag, content))
+        sources.append(pageSources)
+    return sources
+
+
 def fill_lyrics_slides(prs, body):
     lyrics_slide_layout = prs.slide_layouts[1]
     empty_slide_layout = prs.slide_layouts[2]
 
-    source = body.splitlines()
-    print(body, source)
+    sources = get_slide_sources_from_text(body)
+    print(body, sources)
 
-    for text in source:
-        if text:
+    for pageSources in sources:
+        for (tag, content) in pageSources:
             slide = prs.slides.add_slide(lyrics_slide_layout)
             title = slide.placeholders[0]
-            title.text = text
-        else:
-            prs.slides.add_slide(empty_slide_layout)
+            title.text = content
+        prs.slides.add_slide(empty_slide_layout)
