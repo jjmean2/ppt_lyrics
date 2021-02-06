@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 import os
 from pathlib import Path
+from corsheaders.defaults import default_methods
+from corsheaders.defaults import default_headers
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,8 +29,8 @@ SECRET_KEY = 'af1@c8_7q==o4=@5=550o9coh%=dj3_&7qp5!zvq=_&#$@v1g0'
 DEBUG = os.getenv('ENV') == 'DEBUG'
 
 ALLOWED_HOSTS = [
-'jjmean2.pythonanywhere.com',
-'localhost',
+    'jjmean2.pythonanywhere.com',
+    'localhost',
 ]
 
 
@@ -42,11 +44,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ppt_create',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -134,3 +138,15 @@ STATIC_URL = '/static/'
 #     STATIC_DIR,
 # ]
 STATIC_ROOT = ROOT_DIR / '.static_root'
+
+CORS_ALLOWED_ORIGINS = [
+    'https://jjmean2.github.io'
+]
+
+CORS_ALLOW_METHODS = list(default_methods)
+
+CORS_ALLOW_HEADERS = list(default_headers)
+
+CSRF_TRUSTED_ORIGINS = [
+    'jjmean2.github.io',
+]
