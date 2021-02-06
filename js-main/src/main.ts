@@ -1,4 +1,4 @@
-import { LineParser } from './LineParser'
+import { LyricParser } from './LyricParser'
 
 export function initButton(): void {
   const submitButton = document.getElementById('submit-button') as HTMLButtonElement
@@ -6,9 +6,8 @@ export function initButton(): void {
   const textArea = form.lyrics
   const hiddenBody = form.body
   submitButton.onclick = function () {
-    const lineParser = new LineParser(textArea.value)
-    const result = processLyricsText(textArea.value)
-    hiddenBody.value = result
+    const parser = new LyricParser(textArea.value)
+    hiddenBody.value = parser.toFormText()
     form.submit()
   }
 }

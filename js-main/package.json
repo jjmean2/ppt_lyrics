@@ -36,7 +36,7 @@
     "check-types": "tsc",
     "check-types:watch": "tsc --watch",
     "start:dev": "NODE_ENV=development node index.js",
-    "build": "babel src --out-dir lib --copy-files --extensions '.ts,.js'",
+    "build": "babel src --out-file lib/main.js --copy-files --extensions '.ts,.js'",
     "build:tsc": "tsc --rootDir src --outDir lib --noEmit false",
     "start": "node index.js",
     "buildAndRun": "yarn build && ./bin/ppt-create"

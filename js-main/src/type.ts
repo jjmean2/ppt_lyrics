@@ -2,7 +2,7 @@ export {}
 declare global {
   interface Document {
     readonly lyricsform: HTMLFormElement & {
-      readonly ulyrics: HTMLTextAreaElement
+      readonly lyrics: HTMLTextAreaElement
       readonly body: HTMLInputElement
     }
   }
