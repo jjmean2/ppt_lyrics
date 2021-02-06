@@ -42,7 +42,9 @@ def create_ppt_content(body):
 
 
 def get_slide_sources_from_text(body):
-    songs = re.split(r'\n={3,}\n', body)
+    sanitizedBody = '\n'.join(body.splitlines())
+    print(sanitizedBody)
+    songs = re.split(r'\n={3,}\n', sanitizedBody)
     sources = []
     for song in songs:
         pageSources = []
@@ -53,6 +55,7 @@ def get_slide_sources_from_text(body):
             content = '\n'.join(lines[1:])
             pageSources.append((tag, content))
         sources.append(pageSources)
+    print('sources', sources)
     return sources
 
 
@@ -61,7 +64,6 @@ def fill_lyrics_slides(prs, body):
     empty_slide_layout = prs.slide_layouts[2]
 
     sources = get_slide_sources_from_text(body)
-    print(body, sources)
 
     for pageSources in sources:
         for (tag, content) in pageSources:
