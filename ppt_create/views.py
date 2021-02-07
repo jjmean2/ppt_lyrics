@@ -21,7 +21,7 @@ def lyrics(request):
             filename_header = 'filename*=UTF-8\'\'%s' % quote(
                 filename.encode('utf-8'))
             response = HttpResponse(
-                content_type='application/vnd.ms-powerpoint')
+                content_type='application/vnd.openxmlformats-officedocument.presentationml.presentation')
             response['Content-Disposition'] = 'attachment; ' + filename_header
             response.write(ppt)
             return response
