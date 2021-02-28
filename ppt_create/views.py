@@ -18,7 +18,7 @@ def lyrics(request):
             body = form.cleaned_data['body']
             filename = form.cleaned_data['filename']
             ppt = create_ppt_content(body)
-            filename_header = 'filename*=UTF-8\'\'%s' % quote(
+            filename_header = 'filename*=UTF-8\'\'%s.pptx' % quote(
                 filename.encode('utf-8'))
             response = HttpResponse(
                 content_type='application/vnd.openxmlformats-officedocument.presentationml.presentation')
